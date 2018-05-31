@@ -5,25 +5,22 @@ import (
 )
 
 func say(number int) string {
-	if isFizzNumber(number) && isBuzzNumber(number) {
-		return "FizzBuzz"
-	}
 
-	if isFizzNumber(number) {
-		return "Fizz"
+	var fizzBuzz = map[int]string{
+		3: "Fizz",
+		5: "Buzz",
 	}
+	str := ""
+	array := []int{3, 5}
+	for i := 0; i < len(array); i++ {
+		if number%array[i] == 0 {
+			str += fizzBuzz[array[i]]
+		}
 
-	if isBuzzNumber(number) {
-		return "Buzz"
 	}
-
+	if str != "" {
+		return str
+	}
 	return strconv.Itoa(number)
-}
 
-func isFizzNumber(number int) bool {
-	return number%3 == 0
-}
-
-func isBuzzNumber(number int) bool {
-	return number%5 == 0
 }
